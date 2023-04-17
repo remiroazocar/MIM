@@ -12,8 +12,7 @@ In order to use this repository, the user must first download a copy to their lo
 where the download was made, and open and run the `main.R` script. This script specifies the settings of the simulation study, generates the data, 
 performs the standardization methods (saving the point estimates, variances and interval estimates to the `"./Results/"` subdirectory), 
 computes the relevant performance metrics, and graphs the results of the simulation study. The `simulation_functions.R` script contains user-defined
-functions, adapted from [Phillippo et al. (2021)][4], to generate the simulation study data and the `performance_functions.R` script contains user-defined functions to evaluate the performance
-measures of interest. 
+functions, adapted from [Phillippo et al. (2020)][4], to generate the simulation study data. The `performance_functions.R` script contains user-defined functions to evaluate the performance measures of interest. 
 
 The `doSNOW` package is used to parallelize the performance of the methods in the simulation study, distributing the tasks to different cores of the computer. 
 
