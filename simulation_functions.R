@@ -30,7 +30,7 @@ simulateData <- function(N_index, # number of subjects in the index study
   # Set intercept of outcome-generating logistic model
   b_0 <- -0.5
   # Set conditional treatment effect of active treatment vs. placebo at baseline (x=0)
-  b_t <- -2.5
+  b_t <- -1.5
   # Set main "prognostic" effects (in log OR scale)
   b_11 <- prog_strength * x1_index_sd
   b_12 <- prog_strength * x2_index_sd
