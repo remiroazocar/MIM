@@ -13,6 +13,8 @@ simulateData <- function(N_index, # number of subjects in the index study
                          inter_strength, # determines the strength of the interaction coefficients
                          overlap, # determines the level of covariate overlap
                          X_corr, # pairwise correlation coefficient for covariates
+                         missing=FALSE, # flag indicating whether there are some missing outcomes in the index study 
+                         prop.missing=0, # proportion of missing subject-level outcomes in the index study
                          # truth=TRUE means that the returned data frame will be used to compute
                          # the true marginal estimands in the index and target (not for the sim. study)
                          truth=FALSE) { 
@@ -51,6 +53,10 @@ simulateData <- function(N_index, # number of subjects in the index study
       # Simulate outcomes ---------------------------------------------------------
       # Generate binary outcomes with logit link
       LP <- ifelse(trt==0, b_0 + x1*b_11 + x2*b_12, b_0 + x1*b_11 + x2*b_12 + b_t + x1*b_21 + x2*b_22) 
+      if (missing==TRUE) {  # if some outcomes are missing
+        mcar <- runif(N, min=0, max=1) # MCAR (missingness unrelated to anything)
+        y <- ifelse(mcar<prop.missing, NA, y)
+      }
       y  <- ifelse(runif(N) > 1-plogis(LP), 1, 0)
       ipd <- data.frame(x1=x1, x2=x2, trt=trt, y=y)
     } else {
