@@ -60,7 +60,6 @@ datasets.all <- vector(mode="list", scenarios)
 for (i in 1:scenarios) {
   file.id <- paste0("N_", pc$N[i], "_overlap_", pc$overlap[i])
   load(paste0("Data/", file.id, ".RData"))
-  load(paste0("Data/", file.id, ".RData"))
   datasets.all[[i]] <- datasets
 }
 
